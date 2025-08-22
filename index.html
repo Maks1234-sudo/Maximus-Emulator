@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOS Emulator - Веб-эмулятор DOS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Главное меню -->
+        <div id="main-menu" class="menu-container">
+            <div class="menu-header">
+                <h1 class="title">DOS Emulator</h1>
+                <p class="subtitle">Веб-эмулятор DOS-игр и DOS-ОС</p>
+            </div>
+            
+            <div class="menu-options">
+                <button id="start-dos" class="menu-btn primary">Запустить DOS</button>
+                <button id="load-game" class="menu-btn">Загрузить игру</button>
+                <button id="settings" class="menu-btn">Настройки</button>
+                <button id="about" class="menu-btn">О программе</button>
+            </div>
+            
+            <div class="menu-footer">
+                <p>Версия 1.0 | Поддержка: аудио, сеть, файловая система</p>
+            </div>
+        </div>
+
+        <!-- DOS терминал -->
+        <div id="dos-terminal" class="dos-container hidden">
+            <div class="dos-header">
+                <div class="dos-title">DOS Emulator v1.0</div>
+                <div class="dos-controls">
+                    <button id="minimize-dos" class="control-btn">_</button>
+                    <button id="maximize-dos" class="control-btn">□</button>
+                    <button id="close-dos" class="control-btn">×</button>
+                </div>
+            </div>
+            
+            <div class="dos-screen">
+                <div id="dos-output" class="dos-output"></div>
+                <div class="dos-input-line">
+                    <span class="dos-prompt">C:\></span>
+                    <input type="text" id="dos-input" class="dos-input" autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+            
+            <div class="dos-status">
+                <span id="current-dir">C:\</span>
+                <span id="memory-info">640K RAM</span>
+                <span id="network-status">Сеть: ОК</span>
+            </div>
+        </div>
+
+        <!-- Модальные окна -->
+        <div id="file-upload-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Загрузить файл</h3>
+                    <button class="close-modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <input type="file" id="file-input" accept=".exe,.com,.bat,.txt,.img,.iso">
+                    <div class="file-info">
+                        <p>Поддерживаемые форматы: .exe, .com, .bat, .txt, .img, .iso</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="upload-file" class="btn primary">Загрузить</button>
+                    <button class="btn cancel">Отмена</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Настройки</h3>
+                    <button class="close-modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label>Скорость процессора:</label>
+                        <select id="cpu-speed">
+                            <option value="4.77">4.77 MHz (XT)</option>
+                            <option value="8" selected>8 MHz (AT)</option>
+                            <option value="12">12 MHz (AT)</option>
+                            <option value="16">16 MHz (AT)</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label>Память:</label>
+                        <select id="memory-size">
+                            <option value="512">512 KB</option>
+                            <option value="640" selected>640 KB</option>
+                            <option value="1024">1 MB</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="sound-enabled" checked>
+                            Включить звук
+                        </label>
+                    </div>
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="network-enabled" checked>
+                            Включить сеть
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="save-settings" class="btn primary">Сохранить</button>
+                    <button class="btn cancel">Отмена</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Аудио элементы -->
+        <audio id="beep-sound" preload="auto">
+            <source src="sounds/beep.wav" type="audio/wav">
+        </audio>
+        <audio id="click-sound" preload="auto">
+            <source src="sounds/click.wav" type="audio/wav">
+        </audio>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="js/dos-emulator.js"></script>
+    <script src="js/dos-commands.js"></script>
+    <script src="js/audio-manager.js"></script>
+    <script src="js/network-manager.js"></script>
+    <script src="js/file-system.js"></script>
+    <script src="js/game-loader.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

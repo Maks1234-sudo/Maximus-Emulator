@@ -1,0 +1,344 @@
+/* Основные стили для DOS эмулятора */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* Главное меню */
+.menu-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 2px solid #00ff41;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.menu-header .title {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #00ff41;
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    margin-bottom: 0.5rem;
+    letter-spacing: 3px;
+}
+
+.menu-header .subtitle {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 2rem;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.menu-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+    border: 2px solid #00ff41;
+    color: #00ff41;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-btn:hover {
+    background: linear-gradient(45deg, #00ff41, #00cc33);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    transform: translateY(-2px);
+}
+
+.menu-btn.primary {
+    background: linear-gradient(45deg, #00ff41, #00cc33);
+    color: #000;
+}
+
+.menu-btn.primary:hover {
+    background: linear-gradient(45deg, #00cc33, #009926);
+    box-shadow: 0 0 25px rgba(0, 255, 65, 0.7);
+}
+
+.menu-footer p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* DOS терминал */
+.dos-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 900;
+}
+
+.dos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a2e;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid #00ff41;
+}
+
+.dos-title {
+    color: #00ff41;
+    font-weight: 700;
+}
+
+.dos-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.control-btn {
+    width: 30px;
+    height: 30px;
+    background: #333;
+    border: 1px solid #555;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+    background: #555;
+}
+
+.dos-screen {
+    height: calc(100% - 120px);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.dos-output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #00ff41;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+}
+
+.dos-input-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dos-prompt {
+    color: #00ff41;
+    font-weight: 700;
+}
+
+.dos-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #00ff41;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    outline: none;
+}
+
+.dos-status {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1a1a2e;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #00ff41;
+    font-size: 12px;
+    color: #888;
+}
+
+/* Модальные окна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: #1a1a2e;
+    border: 2px solid #00ff41;
+    border-radius: 10px;
+    min-width: 400px;
+    max-width: 600px;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+.modal-header h3 {
+    color: #00ff41;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.setting-group {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting-group label {
+    color: #fff;
+}
+
+.setting-group select,
+.setting-group input[type="checkbox"] {
+    background: #333;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.modal-footer {
+    padding: 1rem;
+    border-top: 1px solid #333;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #555;
+    background: #333;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: #555;
+}
+
+.btn.primary {
+    background: #00ff41;
+    color: #000;
+    border-color: #00ff41;
+}
+
+.btn.primary:hover {
+    background: #00cc33;
+}
+
+/* Утилиты */
+.hidden {
+    display: none !important;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 65, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(0, 255, 65, 0.6); }
+}
+
+.menu-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.menu-container:hover {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .menu-container {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .menu-header .title {
+        font-size: 2rem;
+    }
+    
+    .menu-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+        min-width: auto;
+    }
+}

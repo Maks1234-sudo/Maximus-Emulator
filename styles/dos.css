@@ -1,0 +1,368 @@
+/* Специфичные стили для DOS интерфейса */
+
+/* Классический DOS экран */
+.dos-screen {
+    background: #000080; /* Классический синий фон DOS */
+    color: #ffffff;
+    font-family: 'Courier New', 'JetBrains Mono', monospace;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #00ff41 #000080;
+}
+
+.dos-screen::-webkit-scrollbar {
+    width: 12px;
+}
+
+.dos-screen::-webkit-scrollbar-track {
+    background: #000080;
+}
+
+.dos-screen::-webkit-scrollbar-thumb {
+    background: #00ff41;
+    border-radius: 6px;
+}
+
+.dos-screen::-webkit-scrollbar-thumb:hover {
+    background: #00cc33;
+}
+
+/* DOS вывод */
+.dos-output {
+    color: #ffffff;
+    font-family: 'Courier New', 'JetBrains Mono', monospace;
+    font-size: 16px;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+}
+
+.dos-output .error {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.dos-output .success {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.dos-output .warning {
+    color: #ffff00;
+    font-weight: bold;
+}
+
+.dos-output .info {
+    color: #00ffff;
+}
+
+/* DOS ввод */
+.dos-input-line {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dos-prompt {
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 8px;
+    font-family: 'Courier New', 'JetBrains Mono', monospace;
+    font-size: 16px;
+}
+
+.dos-input {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: 'Courier New', 'JetBrains Mono', monospace;
+    font-size: 16px;
+    outline: none;
+    flex: 1;
+    caret-color: #ffffff;
+}
+
+.dos-input:focus {
+    outline: none;
+}
+
+/* Курсор мигания */
+.dos-input::after {
+    content: '█';
+    animation: blink 1s infinite;
+    color: #ffffff;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* DOS заголовок */
+.dos-header {
+    background: #000080;
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 8px 16px;
+    font-family: 'Courier New', 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dos-title {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.dos-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.control-btn {
+    width: 24px;
+    height: 24px;
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+}
+
+.control-btn:active {
+    border: 2px inset #ffffff;
+    background: #a0a0a0;
+}
+
+/* DOS статус бар */
+.dos-status {
+    background: #c0c0c0;
+    color: #000000;
+    border-top: 2px solid #ffffff;
+    padding: 4px 16px;
+    font-family: 'Courier New', 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Классические DOS цвета */
+.dos-blue-bg {
+    background: #000080;
+}
+
+.dos-white-text {
+    color: #ffffff;
+}
+
+.dos-green-text {
+    color: #00ff00;
+}
+
+.dos-red-text {
+    color: #ff0000;
+}
+
+.dos-yellow-text {
+    color: #ffff00;
+}
+
+.dos-cyan-text {
+    color: #00ffff;
+}
+
+/* DOS ASCII арт */
+.dos-ascii {
+    font-family: 'Courier New', monospace;
+    white-space: pre;
+    line-height: 1;
+    color: #00ff00;
+}
+
+/* DOS рамки */
+.dos-border {
+    border: 2px solid #ffffff;
+    background: #000080;
+    color: #ffffff;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+.dos-border-title {
+    border: 2px solid #ffffff;
+    background: #000080;
+    color: #ffffff;
+    padding: 4px 8px;
+    margin: 8px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* DOS меню */
+.dos-menu {
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    color: #000000;
+    padding: 4px;
+    margin: 4px 0;
+}
+
+.dos-menu-item {
+    padding: 2px 8px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+.dos-menu-item:hover {
+    background: #000080;
+    color: #ffffff;
+}
+
+.dos-menu-item.selected {
+    background: #000080;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* DOS прогресс бар */
+.dos-progress {
+    width: 100%;
+    height: 20px;
+    background: #000080;
+    border: 2px solid #ffffff;
+    margin: 8px 0;
+}
+
+.dos-progress-bar {
+    height: 100%;
+    background: #00ff00;
+    transition: width 0.3s ease;
+}
+
+/* DOS алерт */
+.dos-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #c0c0c0;
+    border: 3px outset #ffffff;
+    color: #000000;
+    padding: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    z-index: 3000;
+    min-width: 300px;
+    text-align: center;
+}
+
+.dos-alert-buttons {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dos-alert-btn {
+    padding: 4px 12px;
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    color: #000000;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dos-alert-btn:active {
+    border: 2px inset #ffffff;
+    background: #a0a0a0;
+}
+
+/* DOS иконки */
+.dos-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.dos-icon.file {
+    background: #ffffff;
+    border: 1px solid #000000;
+}
+
+.dos-icon.folder {
+    background: #ffff00;
+    border: 1px solid #000000;
+}
+
+.dos-icon.disk {
+    background: #00ff00;
+    border: 1px solid #000000;
+    border-radius: 50%;
+}
+
+/* Анимации для DOS */
+@keyframes dos-boot {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.dos-boot-animation {
+    animation: dos-boot 0.5s ease-in;
+}
+
+@keyframes dos-cursor {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.dos-cursor {
+    animation: dos-cursor 1s infinite;
+}
+
+/* Режим полного экрана */
+.dos-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+}
+
+/* Адаптивность для DOS */
+@media (max-width: 768px) {
+    .dos-screen {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    .dos-input,
+    .dos-prompt,
+    .dos-output {
+        font-size: 14px;
+    }
+    
+    .dos-status {
+        font-size: 10px;
+        padding: 2px 8px;
+    }
+}
